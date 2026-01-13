@@ -1,6 +1,16 @@
-# World Anvil Scraper
+# World Anvil Data Exporter
 
-A Python tool to fetch and export your World Anvil worldbuilding data using the official World Anvil API.
+Tools to export and convert your World Anvil worldbuilding data to portable formats (JSON, Markdown, PDF).
+
+## ⚠️ Important: Two Methods Available
+
+### Method 1: Export Converter (Recommended - Works Now!)
+Use World Anvil's built-in export feature. **This works immediately with just your Guild membership.**
+
+See: `EXPORT_METHOD.md` for detailed instructions.
+
+### Method 2: Direct API Access (Requires Application Key)
+Direct API access requires both a user token AND an application key from World Anvil.
 
 ## Features
 
@@ -17,32 +27,43 @@ A Python tool to fetch and export your World Anvil worldbuilding data using the 
 - World Anvil Guild membership (for API access)
 - World Anvil API token
 
-## Installation
+## Quick Start (Export Converter)
 
 1. Install dependencies:
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
-2. Get your API token from: https://www.worldanvil.com/api/auth/key
+2. Export your world from World Anvil:
+   - Go to https://www.worldanvil.com/your-worlds
+   - Export your world (Guild feature)
+   - Download the ZIP file
 
-3. Set your API token as an environment variable:
+3. Convert the export:
+```bash
+python3 world_anvil_export_converter.py ~/Downloads/your_world_export.zip
+```
+
+4. Find your files in `world_anvil_converted/` directory!
+
+## Alternative: Direct API Method
+
+**Note:** Requires both user token AND application key from World Anvil.
+
+1. Get your API token from: https://www.worldanvil.com/api/auth/key
+
+2. Apply for an application key (Grandmaster+ Guild members)
+
+3. Set your tokens:
 ```bash
 export WORLD_ANVIL_TOKEN='your_token_here'
+export WORLD_ANVIL_APP_KEY='your_app_key_here'
 ```
 
-## Usage
-
-Run the scraper:
+4. Run the scraper:
 ```bash
-python world_anvil_scraper.py
+python3 world_anvil_scraper.py
 ```
-
-The tool will:
-1. Connect to the World Anvil API
-2. Fetch all your worlds
-3. Download all articles from each world
-4. Export data to JSON, Markdown, and PDF formats
 
 ## Output
 
